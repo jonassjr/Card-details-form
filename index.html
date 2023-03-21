@@ -17,12 +17,11 @@
     <!--=============== SCRIPT ===============-->
     <script src="./src/Js/index.js" defer></script>
 
-
     <title>Card details form</title>
   </head>
   <body>
     <!--=============== HEADER ===============-->
-    <header class="header ">
+    <header class="header">
       <nav class="nav container">
         <a href="#" class="nav-logo">LOGO.</a>
 
@@ -49,5 +48,59 @@
         </div>
       </nav>
     </header>
+
+    <!--=============== MAIN ===============-->
+    <main class="main">
+      <img
+        class="bg-mobile"
+        src="./assets/img/bg-mobile.svg"
+        alt="background mobile"
+      />
+      <div class="cards-container">
+        <div class="card-front">
+          <img src="./assets/img/bg-card-front.svg" alt="bg card front" />
+          <img
+            class="visa-icon"
+            src="./assets/img/visa-icon.svg"
+            alt=" visa icon"
+          />
+          <p class="card-number">0000 0000 0000 0000</p>
+          <p class="card-name">John Doe</p>
+          <p class="exp-date">00/00</p>
+          <p class="cvc">000</p>
+        </div>
+        <div class="card-back">
+          <img src="./assets/img/bg-card-back.svg" alt="bg card back" />
+        </div>
+      </div>
+
+      <form action="" class="card-form">
+        <section class="details-inputs">
+          <h2 class="section-title">Payment Details</h2>
+
+          <label for="card-holder" class="card-holder-label"
+            >CARDHOLDER NAME</label
+          >
+          <input type="text" class="card-holder-input" />
+
+          <label for="card-number-label" class="card-holder-label"
+            >CARD NUMBER</label
+          >
+          <input type="text" class="card-number-input" />
+
+          <div class="input-box">
+            <label for="exp-date" class="exp-date-label">EXPIRY DATE</label>
+            <input type="text" class="exp-date-input" />
+
+            <label for="cvc" class="cvc-label">CVC</label>
+            <input type="text" class="cvc-input" />
+          </div>
+        </section>
+
+        <div>
+          <button class="btn">Submit</button>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
