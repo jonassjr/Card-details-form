@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== BOXICONS ===============-->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="./src/css/style.css" />
+
+    <!--=============== SCRIPT ===============-->
+    <script src="./src/Js/index.js" defer></script>
+
+    <title>Card details form</title>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header">
+      <nav class="nav container">
+        <a href="#" class="nav-logo">LOGO.</a>
+
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Customer info</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Shiping info</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Payment method</a>
+            </li>
+          </ul>
+
+          <div class="nav-close" id="nav-close">
+            <i class="bx bx-x"></i>
+          </div>
+        </div>
+
+        <div class="nav-toggle" id="nav-toggle">
+          <i class="bx bx-menu"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!--=============== MAIN ===============-->
+    <main class="main">
+      <section class="main-section">
+        <div class="payment-container container">
+          <div class="card-images">
+            <div class="card-front">
+              <img src="./assets/images/card-front.svg" alt="bg card front" />
+              <img
+                class="visa-icon"
+                src="./assets/images/visa-icon.svg"
+                alt=" visa icon"
+              />
+              <p class="card-number" id="display-number">0000 0000 0000 0000</p>
+              <p class="card-info">
+                <span class="name" id="display-name" >John Doe</span>
+                <span class="exp-date" id="display-date">00/00</span>
+                <span class="cvc" id="display-cvc">000</span>
+              </p>
+            </div>
+
+            <div class="card-back">
+              <img src="./assets/images/card-back.svg" alt="bg card back" />
+            </div>
+          </div>
+
+          <form action="" class="card-form">
+            <section class="inputs">
+              <h2 class="section-title">Payment Details</h2>
+
+              <div class="input-wrapper">
+                <i class="bx bx-user-pin user-icon"></i>
+                <label for="card-holder" class="card-holder-label"
+                  >CARDHOLDER NAME</label
+                >
+                <input type="text" class="card-holder-input" id="card-holder" required />
+              </div>
+
+              <div class="input-wrapper">
+                <i class="bx bx-credit-card card-icon"></i>
+                <label for="card-number-label" class="card-holder-label"
+                  >CARD NUMBER</label
+                >
+                <input type="text" class="card-number-input" id="card-number" required />
+              </div>
+
+              <div class="row-inputs">
+                <div class="input-box input-wrapper">
+                  <i class="bx bx-calendar calendar-icon"></i>
+                  <label for="exp-date" class="exp-date-label"
+                    >EXPIRY DATE</label
+                  >
+                  <input type="text" class="exp-date-input" id="exp-date" required />
+                </div>
+
+                <div class="input-box input-wrapper">
+                  <i class="bx bx-lock lock-icon"></i>
+                  <label for="cvc" class="cvc-label">CVC</label>
+                  <input type="text" class="cvc-input" id="cvc" required />
+                </div>
+              </div>
+            </section>
+
+            <div>
+              <button class="btn" type="submit">
+                Submit
+                <i class="bx bx-chevron-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
