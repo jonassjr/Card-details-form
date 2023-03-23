@@ -7,19 +7,12 @@
 
   /*========== Colors ==========*/
   --first-color: hsla(0, 0%, 100%);
-  --second-color: hsla(230, 87%, 78%);
-  --text-color: hsla(0, 0%, 0%);
-  --placeholder-color: hsla(279, 6%, 55%);
-  --front-card-color: hsla(235, 100%, 66%);
+  --second-color: hsla(0, 0%, 12%);
+  --third-color: hsla(230, 87%, 78%);
 
   /*========== Font and typography ==========*/
   --body-font: "Montserrat", sans-serif;
   --card-font: "Space Grotesk", sans-serif;
-  --normal-font-size: 1.125rem;
-  --small-font-size: 0.875rem;
-  --smaller-font-size: 0.813rem;
-  --big-font-size: 1.375rem;
-  --biggest-font-size: 2rem;
 
   /*========== Font weight ==========*/
   --font-regular: 400;
@@ -36,9 +29,8 @@
 
 body {
   font-family: var(--body-font);
-  font-size: var(--normal-font-size);
   font-weight: var(--font-regular);
-  color: var(--text-color);
+  color: var(--second-color);
 }
 
 ul {
@@ -50,7 +42,7 @@ a {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
@@ -62,15 +54,15 @@ button {
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
+
 .container {
   max-width: 1024px;
-  margin-right: 1.5rem;
-  margin-left: 1.5rem;
+  margin-inline: 1.5rem;
 }
 
 /*=============== HEADER & NAV ===============*/
 .header {
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
@@ -80,8 +72,8 @@ button {
 }
 
 .nav {
-  height: var(--header-height);
   display: flex;
+  height: var(--header-height);
   justify-content: space-between;
   align-items: center;
 }
@@ -94,7 +86,7 @@ button {
 
 .nav-logo {
   font-weight: var(--font-bold);
-  font-size: var(--biggest-font-size);
+  font-size: 32px;
   letter-spacing: 0.1rem;
 }
 
@@ -113,7 +105,7 @@ button {
     padding: 5rem 0 4rem;
     border-radius: 0 0 1.5rem 1.5rem;
     box-shadow: 0 2px 4px hsla(38, 4%, 15%, 0.15);
-    transition: 1s;
+    transition: 1s ease-in-out;
   }
 }
 
@@ -125,14 +117,13 @@ button {
 }
 
 .nav-link {
-  color: var(--text-color);
+  color: var(--second-color);
+  font-size: 16px;
 }
 
 .active {
-  padding-bottom: 0.5rem;
-  padding-inline: 1rem;
-  color: var(--second-color);
-  border-bottom: 1px solid var(--second-color);
+  font-weight: var(--font-bold);
+  color: var(--third-color);
 }
 
 .nav-close {
@@ -151,134 +142,124 @@ button {
 
 /*=============== MAIN ===============*/
 /*========== Cards ==========*/
-.bg-mobile {
-  width: 100vw;
-  height: fit-content;
-}
-
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -70vw;
-  margin-top: calc((-100vw - 130px) / 2);
-}
-
-.card-front,
-.card-back {
-  max-width: 300px;
+.main-section {
   position: relative;
+  padding: 8rem 0 2rem;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.payment-container {
+  display: grid;
+  place-items: center;
 }
 
 .card-front {
-  margin-right: 25px;
+  position: relative;
+  max-width: 385px;
+  left: -1rem;
+  font-family: var(--card-font);
+  color: var(--first-color);
   z-index: 1;
 }
 
 .visa-icon {
+  max-width: 80px;
   position: absolute;
-  width: 70px;
   top: 1rem;
   right: 1rem;
 }
 
 .card-number {
   position: absolute;
-  top: 4.5rem;
-  left: 1.5rem;
-  color: var(--first-color);
-  font-family: var(--card-font);
-  letter-spacing: 0.1rem;
+  top: 6.5rem;
+  left: 2rem;
+  font-size: 26px;
   font-weight: var(--font-medium);
-  font-size: 20px; /*Alterar depois*/
+  letter-spacing: 0.1rem;
 }
 
-.card-name {
+.card-info .name,
+.card-info .exp-date,
+.card-info .cvc {
   position: absolute;
-  top: 8rem;
-  left: 1.5rem;
-  color: var(--first-color);
-  font-family: var(--card-font);
-  font-size: var(--small-font-size);
+  top: 10rem;
+  font-size: 16px;
 }
 
-.exp-date {
-  position: absolute;
-  top: 8rem;
-  left: 9.5rem;
-  color: var(--first-color);
-  font-family: var(--card-font);
-  font-size: var(--small-font-size);
+.card-info .name {
+  left: 2rem;
 }
-.cvc {
-  position: absolute;
-  top: 8rem;
-  right: 1.5rem;
-  color: var(--first-color);
-  font-family: var(--card-font);
-  font-size: var(--small-font-size);
+
+.card-info .exp-date {
+  left: 12rem;
+}
+
+.card-info .cvc {
+  right: 2rem;
 }
 
 .card-back {
   position: relative;
-  margin-top: -130px;
-  margin-right: -25px;
-  height: 164px;
-  border-radius: 20px;
+  max-width: 385px;
+  height: 211px;
+  top: -10rem;
+  right: -1rem;
+  border-radius: 16px;
   box-shadow: 0 6px 24px hsla(0, 0%, 15%, 0.479);
 }
 
 /*========== Form ==========*/
+
 .card-form {
-  margin-top: calc(30vw + 25px);
-  margin-bottom: 5rem;
   display: flex;
   flex-direction: column;
-  margin-inline: 1.5rem;
-  flex-wrap: wrap;
   align-content: center;
+  margin-bottom: 2rem;
 }
 
-.details-inputs {
+.inputs {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  max-width: 400px;
 }
 
 .section-title {
-  font-size: var(--big-font-size);
+  font-size: 28px;
 }
 
 .card-holder-label,
-.card-name-label,
+.card-number-label,
 .exp-date-label,
 .cvc-label {
   display: block;
-  color: var(--text-color);
-  font-size: var(--small-font-size);
+  color: var(--second-color);
+  font-size: 16px;
   font-weight: var(--font-medium);
 }
 
-.input-wrapper {
-  position: relative;
-}
-
-.icon {
+.user-icon,
+.card-icon,
+.lock-icon,
+.calendar-icon {
   position: relative;
   top: 3.7rem;
   left: 0.7rem;
   font-size: 1.5rem;
   color: var(--second-color);
+  transition: color 0.4s;
 }
 
 .card-holder-input,
 .card-number-input {
   width: 100%;
   padding: 14px 12px 14px 45px;
-  border-bottom: 2px solid var(--second-color);
-  color: var(--text-color);
+  border-bottom: 2px solid lightgrey;
+  color: var(--second-color);
   font-weight: var(--font-medium);
-  font-size: var(--normal-font-size);
+  font-size: 16px;
   transition: border 0.4s;
 }
 
@@ -294,10 +275,10 @@ button {
 .cvc-input {
   width: 100%;
   padding: 14px 12px 14px 45px;
-  border-bottom: 2px solid var(--second-color);
-  color: var(--text-color);
+  border-bottom: 2px solid lightgrey;
+  color: var(--second-color);
   font-weight: var(--font-medium);
-  font-size: var(--normal-font-size);
+  font-size: 16px;
   transition: border 0.4s;
 }
 
@@ -305,77 +286,178 @@ button {
 .card-number-input:focus,
 .exp-date-input:focus,
 .cvc-input:focus {
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid var(--third-color);
+}
+
+.focus {
+  color: var(--third-color);
 }
 
 .btn {
+  display: inline-flex;
+  align-items: center;
   margin-top: 2rem;
-  padding: 12px 30px;
+  padding: 14px 30px;
   border-radius: 25px;
   background-color: var(--second-color);
   color: var(--first-color);
-  font-size: var(--normal-font-size);
+  font-size: 16px;
   font-weight: var(--font-medium);
   letter-spacing: 0.1rem;
   cursor: pointer;
+  box-shadow: 0 6px 24px hsla(40, 4%, 15%, 0.1);
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.btn i {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn:hover {
+  box-shadow: 0 6px 24px hsla(40, 4%, 15%, 0.5);
+}
+
+.btn:hover i {
+  transform: translateX(0.5rem);
 }
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 375px) {
   .card-front,
   .card-back {
-    width: 245px;
-    height: 134px;
+    width: 240px;
+    height: 127px;
   }
 
   .visa-icon {
-    width: 50px;
-  }
-
-  .card-back {
-    top: 1rem;
+    width: 45px;
   }
 
   .card-number {
-    font-size: 15px;
+    top: 4rem;
+    font-size: 16px;
+    left: 1rem;
+    font-weight: var(--font-medium);
+    letter-spacing: 0.1;
   }
 
-  .cvc,
-  .exp-date,
-  .card-name {
-    font-size: var(--smaller-font-size);
+  .card-info .name,
+  .card-info .exp-date,
+  .card-info .cvc {
+    position: absolute;
+    top: 6rem;
+    font-size: 12px;
   }
 
-  .cvc,
-  .exp-date,
-  .card-name {
-    top: 6.5rem;
+  .card-info .name {
+    left: 1rem;
   }
 
-  .exp-date {
+  .card-info .exp-date {
     left: 8rem;
   }
 
-  .icon {
-    top: 3.5rem;
-    font-size: 1.2rem;
+  .card-info .cvc {
+    right: 1rem;
   }
-  .card-holder-input,
-  .card-number-input,
-  .exp-date-input,
-  .cvc-input {
-    font-size: var(--small-font-size);
+
+  .card-back {
+    top: -6.5rem;
+    right: -0.5rem;
   }
-  .btn {
-    font-size: var(--smaller-font-size);
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .card-holder-label,
+  .card-number-label,
+  .exp-date-label,
+  .cvc-label {
+    font-size: 14px;
   }
 }
 
-@media screen and (min-width: 425px) {
-  .details-inputs {
-    max-width: 366px;
+@media screen and (min-width: 376px) and (max-width: 484px) {
+  .card-front,
+  .card-back {
+    max-width: 300px;
+    height: 164px;
   }
 
-  
+  .visa-icon {
+    width: 70px;
+  }
+
+  .card-number {
+    top: 5rem;
+    font-size: 20px;
+    left: 1.5rem;
+    font-weight: var(--font-medium);
+    letter-spacing: 0.1;
+  }
+
+  .card-info .name,
+  .card-info .exp-date,
+  .card-info .cvc {
+    position: absolute;
+    top: 8rem;
+    font-size: 14px;
+  }
+
+  .card-info .name {
+    left: 1.5rem;
+  }
+
+  .card-info .exp-date {
+    left: 10rem;
+  }
+
+  .card-info .cvc {
+    right: 1.5rem;
+  }
+
+  .card-back {
+    top: -8.5rem;
+  }
+}
+
+/* For Medium devices */
+@media screen and (min-width: 769px) {
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+
+  .nav-toggle,
+  .nav-close {
+    display: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    column-gap: 2rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .payment-container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 10rem;
+  }
+
+  .card-images {
+    position: relative;
+    top: 2rem;
+  }
+}
+
+@media screen and (min-width: 1048px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
