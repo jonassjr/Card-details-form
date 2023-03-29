@@ -47,12 +47,21 @@ inputClasses.forEach((inputClass, index) => {
   toggleFocus(input, icon);
 });
 
+const cardHolder = document.getElementById("card-holder");
 const cardNumber = document.getElementById("card-number");
 const expDate = document.getElementById("exp-date");
 const cvc = document.getElementById("cvc");
 
 // Formatação de inputs
 // Formatando entrada de número do cartão
+cardHolder.addEventListener("input", function () {
+  let value = this.value;
+
+  value = value.replace(/[^a-zA-Z\s]/g, "");
+
+  this.value = value;
+});
+
 cardNumber.addEventListener("input", function () {
   let value = this.value;
 
@@ -71,7 +80,6 @@ cardNumber.addEventListener("input", function () {
   this.value = formattedValue;
 });
 
-
 // Formatação de input de data
 expDate.addEventListener("input", function () {
   let inputVal = this.value;
@@ -87,25 +95,21 @@ expDate.addEventListener("input", function () {
   }
 
   this.value = inputVal;
-
-  
 });
 
-cvc.addEventListener('input', function(){
+cvc.addEventListener("input", function () {
   let inputVal = this.value;
 
-  inputVal = inputVal.replace(/[^\d]/g, '');
+  inputVal = inputVal.replace(/[^\d]/g, "");
 
   if (inputVal.length > 3) {
-    inputVal = inputVal.slice(0,3);
+    inputVal = inputVal.slice(0, 3);
   }
 
   this.value = inputVal;
-})
+});
 
 // Reproduzindo inputs no cartão
-const cardHolder = document.getElementById("card-holder");
-
 const name = document.getElementById("display-name");
 const number = document.getElementById("display-number");
 const date = document.getElementById("display-date");
@@ -121,3 +125,19 @@ display(cardHolder, name);
 display(cardNumber, number);
 display(expDate, date);
 display(cvc, cvcNumber);
+
+// Show Success Popup
+const form = document.getElementById("form");
+const popupContainer = document.getElementById("popup-container");
+const paymContainer = document.getElementById("payment-container");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  popupContainer.classList.add("show-modal");
+  setTimeout(function () {
+    popupContainer.classList.remove("show-modal");
+  }, 20000);
+
+  paymContainer.classList.add("hide");
+});
