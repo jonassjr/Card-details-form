@@ -142,6 +142,11 @@ button {
 
 /*=============== MAIN ===============*/
 /*========== Cards ==========*/
+.bg-desktop {
+  display: none;
+}
+
+
 .main-section {
   position: relative;
   padding: 8rem 0 2rem;
@@ -153,6 +158,7 @@ button {
 .payment-container {
   display: grid;
   place-items: center;
+
 }
 
 .card-front {
@@ -380,6 +386,71 @@ button {
   }
 }
 
+/* To hide section form */
+.hide {
+  display: none;
+}
+
+/*=============== POPUP ===============*/
+.popup {
+  display: grid;
+  place-items: center;
+}
+
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsla(var(--hue), 18%, 75%, 0.8);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  align-items: flex-end;
+  transition: all 0.3s;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup-content {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background-color: var(--first-color);
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 6px 24px rgb(0, 0, 0, 0.25);
+  transition: all 0.4s;
+  transform: scale(0.5) translateY(10%);
+}
+
+.popup-image {
+  width: 150px;
+  margin-bottom: 2rem;
+}
+
+.popup-title {
+  font-size: 28px;
+  margin-bottom: 1rem;
+}
+
+.popup-description {
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+/* Show modal */
+.show-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.show-modal .popup-content {
+  transform: scale(1) translateY(0);
+}
+
 @media screen and (min-width: 376px) and (max-width: 484px) {
   .card-front,
   .card-back {
@@ -424,6 +495,18 @@ button {
   }
 }
 
+@media screen and (min-width: 576px) {
+  .popup-content {
+    margin: auto;
+    width: 380px;
+    border-radius: 1.35rem;
+  }
+
+  .popup-image {
+    width: 170px;
+  }
+}
+
 /* For Medium devices */
 @media screen and (min-width: 769px) {
   .nav {
@@ -443,10 +526,20 @@ button {
 
 /* For large devices */
 @media screen and (min-width: 1024px) {
+  .bg-desktop {
+    display: block;
+    width: 540px;
+    height: auto;
+    position: absolute;
+    left: -5rem;
+    bottom: 0;
+  }
+
   .payment-container {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     column-gap: 10rem;
+    position: relative;
   }
 
   .card-images {
